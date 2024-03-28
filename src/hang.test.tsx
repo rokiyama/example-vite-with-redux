@@ -3,8 +3,9 @@ import { useLazyGetUserQuery } from "./app/api"
 import { renderWithProviders } from "./utils/test-utils"
 
 const useGreet = () => {
+  const greet = useCallback(() => "Hello", [])
   return {
-    greet: () => "hello",
+    greet,
   }
 }
 
