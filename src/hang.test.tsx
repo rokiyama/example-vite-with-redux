@@ -1,13 +1,13 @@
 import { useCallback, useEffect } from "react"
 import { useLazyGetUserQuery } from "./app/api"
 import { renderWithProviders } from "./utils/test-utils"
+import { useGreet } from "./other-module"
 
-const useGreet = () => {
-  const greet = useCallback(() => "Hello", [])
-  return {
-    greet,
-  }
-}
+vi.mock("./other-module", () => ({
+  useGreet: () => ({
+    greet: () => "mocked",
+  }),
+}))
 
 const useMyQuery = () => {
   const { greet } = useGreet()
