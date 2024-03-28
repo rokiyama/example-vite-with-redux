@@ -3,9 +3,11 @@ import { useLazyGetUserQuery } from "./app/api"
 import { renderWithProviders } from "./utils/test-utils"
 import { useGreet } from "./other-module"
 
+const greet = () => "mocked"
+
 vi.mock("./other-module", () => ({
   useGreet: () => ({
-    greet: () => "mocked",
+    greet,
   }),
 }))
 
